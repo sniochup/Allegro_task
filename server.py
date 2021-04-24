@@ -1,3 +1,5 @@
+from http.server import HTTPServer, BaseHTTPRequestHandler
+from sys import argv
 import requests
 
 
@@ -37,4 +39,37 @@ def request(user):
 	return {'user': user, 'repositories': repos, 'stargazers_sum': stargazers_counter}
 
 
-print(request("sniochup"))
+class Handler(BaseHTTPRequestHandler):
+	def set_headers(self):
+		self.send_response(200)
+		self.send_header("Content-type", "text/json")
+		self.end_headers()
+
+	def do_HEAD(self):
+		self.set_headers()
+
+	def do_GET(self):
+		self.set_headers()
+
+	def do_POST(self):
+		self.set_headers()
+
+
+def main(PORT=9000):
+	HOST = "localhost"
+	server_address = (HOST, PORT)
+	httpd = HTTPServer(server_address, Handler)
+	print(f"Server Starts - {HOST}:{PORT}")
+	try:
+		httpd.serve_forever()
+	except KeyboardInterrupt:
+		pass
+	httpd.server_close()
+	print(f"Server Stoped - {HOST}:{PORT}")
+
+
+if __name__ == '__main__':
+	if len(argv) == 2:
+		main(PORT=int(argv[1]))
+	else:
+		main()
