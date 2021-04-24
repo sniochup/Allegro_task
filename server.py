@@ -1,6 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from sys import argv
 import requests
+import json
 
 
 def request(user):
@@ -40,19 +41,31 @@ def request(user):
 
 
 class Handler(BaseHTTPRequestHandler):
-	def set_headers(self):
+	def _set_headers(self):
 		self.send_response(200)
 		self.send_header("Content-type", "text/json")
 		self.end_headers()
 
 	def do_HEAD(self):
-		self.set_headers()
+		self._set_headers()
 
 	def do_GET(self):
-		self.set_headers()
+		self._set_headers()
+		user = self.path[1:]
+		print(f"User: {user}")
+		api_req = request(user)
+		api_req = json.dumps(api_req, indent=4)
+		# print(api_req)
+		self.wfile.write(api_req.encode())
 
 	def do_POST(self):
-		self.set_headers()
+		self._set_headers()
+		user = self.rfile.read(int(self.headers['Content-Length'])).decode()
+		print(f"User: {user}")
+		api_req = request(user)
+		api_req = json.dumps(api_req, indent=4)
+		# print(api_req)
+		self.wfile.write(api_req.encode())
 
 
 def main(PORT=9000):
