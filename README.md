@@ -21,7 +21,7 @@ Now your server is working until you will call keyboard interruption pressing `C
 Server handle three types of request which returns the data using the HTTP protocol.
 
 #### HEAD
-Return only headers with response code **200**.
+Returns only headers with response code **200**.
 To send the _HEAD_ request type in command line:
 ```
        curl -X HEAD -I localhost:<PORT>
@@ -32,7 +32,7 @@ like   curl -X HEAD -I 127.0.0.1:9000
 ```
 
 #### GET
-Return an information as a json file with response code **200**.
+Returns an information as a json file with response code **200**.
 The request should be in below format with username in a path.
 To send the _GET_ request type in command line:
 ```
@@ -44,7 +44,7 @@ like: curl -X GET 127.0.0.1:9000/allegro
 ```
 
 #### POST
-Return an information as a json file with response code **200**.
+Returns an information as a json file with response code **200**.
 The request should be in below format with username in a quotes after `-d` mark.
 To send the _POST_ request type in command line:
 ```
