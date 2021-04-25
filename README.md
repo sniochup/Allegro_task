@@ -33,7 +33,7 @@ like   curl -X HEAD -I 127.0.0.1:9000
 
 #### GET
 Returns an information as a json file with response code **200**.
-The request should be in below format with username in a path.
+The request should be in the following format with username in a path.
 To send the _GET_ request type in command line:
 ```
       curl -X GET localhost:9000/<username>
@@ -45,7 +45,7 @@ like: curl -X GET 127.0.0.1:9000/allegro
 
 #### POST
 Returns an information as a json file with response code **200**.
-The request should be in below format with username in a quotes after `-d` mark.
+The request should be in the following format with username in a quotes after `-d` mark.
 To send the _POST_ request type in command line:
 ```
       curl -X POST -d "<username>" localhost:<PORT>
