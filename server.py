@@ -54,18 +54,16 @@ class Handler(BaseHTTPRequestHandler):
 		user = self.path[1:]
 		print(f"User: {user}")
 		api_req = request(user)
-		api_req = json.dumps(api_req, indent=4)
 		# print(api_req)
-		self.wfile.write(api_req.encode())
+		self.wfile.write(json.dumps(api_req, indent=4).encode("utf-8"))
 
 	def do_POST(self):
 		self._set_headers()
 		user = self.rfile.read(int(self.headers['Content-Length'])).decode()
 		print(f"User: {user}")
 		api_req = request(user)
-		api_req = json.dumps(api_req, indent=4)
 		# print(api_req)
-		self.wfile.write(api_req.encode())
+		self.wfile.write(json.dumps(api_req, indent=4).encode("utf-8"))
 
 
 def main(PORT=9000):

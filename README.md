@@ -5,7 +5,6 @@ Simple server implemented in Python language which lists the github repositories
 Firstly, you need to install the libraries if you don't have them on your computer yet.
 ```
 pip install requests
-pip install json
 ```
 Then go to the directory with server.py file. To start the server on the default localhost 9000 port in command line type:
 ```
@@ -18,7 +17,7 @@ like: python server.py 8080
 ```
 Now your server is working until you will call keyboard interruption pressing `Ctrl+C` combination.
 
-##Usage
+## Usage
 Server handle three types of request which returns the data using the HTTP protocol.
 
 #### HEAD
@@ -55,10 +54,10 @@ like: curl -X POST -d "allegro" localhost:9000
       curl -X POST -d "<username>" 127.0.0.1:<PORT>
 like: curl -X POST -d "allegro" 127.0.0.1:9000
 ```
+
 ## Possible upgrades
 - using authentication tokens to increase github api request limit
 - getting more information about the repositories, such as last update or language 
-
-          
+      
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
