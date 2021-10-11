@@ -1,4 +1,4 @@
-# Allegro_task
+# Repositories list
 Simple server implemented in Python language which lists the github repositories, their number of stars and sum of stars for the selected username.
 
 ## Installation
